@@ -9,7 +9,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
   exit;
 }
  
-require_once "config.php";
+require_once 'database/config.php';
 
     $username = $password = "";
     $username_err = $password_err = "";

@@ -1,30 +1,38 @@
 <?php
-include('config.php');
+       // recuperar contraseña
 
-$correo = $_POST['txtcorreo'];
+	   require 'database/config.php';
+	   require 'config/funciones_email.php';
+        
 
-$queryusuario 	= mysqli_query($conn,"SELECT * FROM users WHERE email = '$correo'");
-$nr 			= mysqli_num_rows($queryusuario); 
-if ($nr == 1)    {
+	   $errors = array();
 
-$mostrar		= mysqli_fetch_array($queryusuario); 
-$enviarpass 	= $mostrar['pass'];
+	   if(!empty($_POST)){
 
-$paracorreo 		= $correo;
-$titulo				= "Recuperar contraseña";
-$mensaje			= $enviarpass;
-$tucorreo			= "From: xxxx@gmail.com";
+		   $email = $mysqli->real_escape_string($_POST['email']);
 
-if(mail($paracorreo,$titulo,$mensaje,$tucorreo)) {
-		echo "<script> alert('Contraseña enviado');window.location= 'login.html' </script>";
-	} else
-{
-	echo "<script> alert('Error');window.location= 'login.html' </script>";
-}
-}
-else
-{
-	echo "<script> alert('Este correo no existe');window.location= 'login.html' </script>";
-}
+
+		   if(!isEmail($email)) {
+			   $errors[] = "Debe ingresar un correo electronico valido";
+
+                if(emailExiste($email)) {
+
+					$user_id = getValor('id', 'correo', $email);
+					$user_id = getValor('nombre', 'correo', $email);
+
+					$token
+
+				}
+			   
+		   }
+	   }
+
+
 
 ?>
+
+
+<!DOCTYPE html>
+<html>
+
+
