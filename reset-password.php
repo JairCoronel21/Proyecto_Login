@@ -1,5 +1,5 @@
 <?php
-
+/*
 session_start();
  
 
@@ -7,7 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
- 
+*/ 
 
 require_once 'database/config.php';
  
@@ -73,13 +73,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<link href="estilo.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <title>Cambia tu contraseña acá</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimal-scale=1.0">
 </head>
 <body>
     <div class="wrapper">
@@ -101,6 +100,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <a class="btn btn-link" href="welcome.php">Cancelar</a>
             </div>
         </form>
+
+        
+        <div class="underlay-photo">
+                <img src="ola.png">
+            </div>
+            <div class="underlay-black"></div> 
     </div>    
 </body>
 </html>

@@ -119,46 +119,67 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="estilo.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <title>Login</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .contenedor{ width: 1000px; max-width: 1000px; margin:0 auto; background: skyblue;} 
-    </style>
+    
+    
     
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimal-scale=1.0">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script type="text/javascript">
+	    document.onkeydown=function (e){
+        var currKey=0,evt=e||window.event;
+        currKey=evt.keyCode||evt.which||evt.charCode;
+        if (currKey == 123) {
+            window.event.cancelBubble = true;
+            window.event.returnValue = false;
+        }
+    }
+	</script>
 </head>
-<body>
-    <div class="contenedor">
-        <h2>Softgold  Inicio de Sesión</h2>
-        <p>Por favor, complete sus credenciales para iniciar sesión.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+<body onkeydown="return">
+
+           <header class="izquierda">
+                <h1>Softgold</h1>
+                <p class="slogan">Cero preocupaciones con Softgold.</p>
+            </header>
+    <section class="contenedor">
+        <h2>Inicio de Sesión</h2>
+        <p class="login-text">Por favor, complete sus credenciales para iniciar sesión.</p>
+        <form class="login-form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                
-                <input placeholder="Ingrese correo electronico o nombre de usuario: " type="text" name="username" class="form-control" value="<?php echo $username;?>">
+                <input placeholder="Ingrese su Email" type="text" name="username" class="" value="<?php echo $username;?>">
                 <span class="help-block"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                
-                <input placeholder="Ingrese su contraseña: " type="password" name="password" class="form-control">
+                <input placeholder="Ingrese su contraseña: " type="password" name="password" class="">
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
             
             <!-- Crear el captcha -->
             <div class="form-group">
-                            <div class="g-recaptcha" data-sitekey="6Lcv7akhAAAAAAc-pPCutQ0GUKkhDUmu2an-h4d9"></div>
+                <div class="g-recaptcha" data-sitekey="6Lcv7akhAAAAAAc-pPCutQ0GUKkhDUmu2an-h4d9"></div>
             </div>
 
              
             <div class="form-group">
                 <!-- El boton Ingresar -->
                 <input type="submit" class="btn btn-primary" value="Ingresar">
+                
             </div>
-            <p>¿Has olvidado tu contraseña? <a href="recuperar.php">Ingrese aqui</a>.</p>
-            <p>¿No tienes una cuenta? <a href="register.php">Regístrate ahora</a>.</p>
+            <p class="p1">¿Has olvidado tu contraseña? <a class="a1" href="recuperar.php">Ingrese aqui</a></p>
+                <p class="p2">¿No tienes una cuenta? <a class="a2" href="register.php">Regístrate ahora</a></p>
         </form>
-    </div>    
+
+
+
+        <div class="underlay-photo">
+            <img src="ola.png">
+        </div>
+        <div class="underlay-black"></div>
+</section>    
 </body>
 </html>
